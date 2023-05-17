@@ -1,21 +1,6 @@
 {
-  "HELLO": "안녕하세요",
-  "PRODUCT": {
-    "NEW": "새로운 제품: {name}"
-  },
-  "ENGLISH": "영어",
-  "ARRAY": ["하나", "둘", "셋"],
-  "cat": "고양이",
-  "cat_name": "고양이: {name}",
-  "set-up-password": {
-    "heading": "안녕하세요, {username}",
-    "title": "비밀번호를 잊으셨습니까?",
-    "followLink": "비밀번호를 설정하려면 링크를 따라주세요"
-  },
-  "day_interval": {
-    "one": "매일",
-    "other": "매 {count}일마다",
-    "zero": "절대 안 함"
-  },
-  "nested": "쇼핑하러 갑니다: $t(test.day_interval, {{\"count\": {count} }})"
+  "hello": "안녕하세요",
+  "product": {
+    "new": "새로운 제품: {name}"
+  }
 }

@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { I18n, I18nContext } from 'nestjs-i18n';
+import { I18n, I18nContext, logger } from 'nestjs-i18n';
 
 @Controller()
 export class AppController {
@@ -13,6 +13,7 @@ export class AppController {
 
   @Get('/test')
   async getLocaleHello(@I18n() i18n: I18nContext) {
-    return await i18n.t('test.HELLO');
+    console.log(`test: ${i18n.t('test.product.new')}`);
+    return await i18n.t('test.hello');
   }
 }

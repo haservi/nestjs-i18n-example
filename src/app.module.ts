@@ -7,7 +7,12 @@ import * as path from 'path';
 @Module({
   imports: [
     I18nModule.forRoot({
-      fallbackLanguage: 'en',
+      fallbackLanguage: 'ja',
+      fallbacks: {
+        'en-*': 'en',
+        'ko-*': 'ko',
+        'ja-*': 'ja',
+      },
       loaderOptions: {
         path: path.join(__dirname, '/i18n/'),
         watch: true,
