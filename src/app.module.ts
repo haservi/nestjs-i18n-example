@@ -1,38 +1,16 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import {
-  AcceptLanguageResolver,
-  HeaderResolver,
-  I18nModule,
-  QueryResolver,
-} from 'nestjs-i18n';
-import * as path from 'path';
+import { urlencoded } from 'express';
+import { i18nModule } from './modules/i18n.module';
 
 @Module({
-  imports: [
-    I18nModule.forRoot({
-      fallbackLanguage: 'ja',
-      fallbacks: {
-        'en-*': 'en',
-        'ko-*': 'ko',
-        'ja-*': 'ja',
-      },
-      loaderOptions: {
-        path: path.join(__dirname, '/i18n/'),
-        watch: true,
-      },
-      resolvers: [
-        new QueryResolver(['lang']),
-        new HeaderResolver(['Accept-Language']),
-        // new CookieResolver(),
-        AcceptLanguageResolver,
-      ],
-    }),
-  ],
+  imports: [i18nModule],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {}
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(urlencoded({ extended: true })).forRoutes('*');
+  }
 }
